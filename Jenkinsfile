@@ -4,6 +4,7 @@ pipeline {
    environment {
        DOCKER_HUB_REPO = "belevski97/flask-hello-world"
        CONTAINER_NAME = "flask-hello-world"
+       DOCKERHUB_CREDENTIALS=credentials('dockerhub-credentials')
  
    }
   
@@ -25,13 +26,19 @@ pipeline {
                bat 'docker run --name  %CONTAINER_NAME% %DOCKER_HUB_REPO% /bin/bash -c "pytest test.py && flake8"'
            }
        }
+       stage('Push') {
+           steps {
+               echo 'Pushing image..'
+               bat 'echo %DOCKERHUB_CREDENTIALS_PSW% | docker login -u %DOCKERHUB_CREDENTIALS_USR% --password-stdin'
+               bat 'docker push %DOCKER_HUB_REPO%:latest'
+           }
+       }
        stage('Deploy') {
            steps {
                echo 'Deploying....'
-               bat 'docker stop %CONTAINER_NAME% || true'
-               bat 'docker rm %CONTAINER_NAME% || true'
-               bat 'docker run -d -p 5000:5000 --name %CONTAINER_NAME% %DOCKER_HUB_REPO%'
+               bat 'minikube kubectl -- apply -f deployment.yaml'
+               bat 'minikube kubectl -- apply -f service.yaml'
            }
-       }
+       }       
    }
 }
