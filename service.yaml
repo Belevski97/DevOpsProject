@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
- name: flask-hello-service-nodeport # name of the service
+ name: flask-hello-service-nodeport2 # name of the service
  
 spec:
  type: NodePort # Used for accessing a port externally
