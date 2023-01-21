@@ -29,7 +29,7 @@ pipeline {
        stage('Push') {
            steps {
                echo 'Pushing image..'
-               bat 'echo %DOCKERHUB_CREDENTIALS_PSW% | docker login -u %DOCKERHUB_CREDENTIALS_USR% --password-stdin'
+               bat 'echo %DOCKERHUB_CREDENTIALS_PSW% | docker login -u %DOCKERHUB_CREDENTIALS_USR% -p %DOCKERHUB_CREDENTIALS_PSW%'
                bat 'docker push %DOCKER_HUB_REPO%:latest'
                }
            }
