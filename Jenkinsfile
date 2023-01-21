@@ -29,12 +29,10 @@ pipeline {
        stage('Push') {
            steps {
                echo 'Pushing image..'
-               withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', passwordVariable: 'dockerhub-credentialsPassword', usernameVariable: 'dockerhub-credentialsUser')]) {
-               bat 'docker login -u ${env.dockerhub-credentialsUser} -p ${env.dockerhub-credentialsPassword}'
+               bat 'echo %DOCKERHUB_CREDENTIALS_PSW% | docker login -u %DOCKERHUB_CREDENTIALS_USR% --password-stdin'
                bat 'docker push %DOCKER_HUB_REPO%:latest'
                }
            }
-       }
        stage('Deploy') {
            steps {
                echo 'Deploying....'
