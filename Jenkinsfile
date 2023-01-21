@@ -32,6 +32,7 @@ pipeline {
                withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', passwordVariable: 'dockerhub-credentialsPassword', usernameVariable: 'dockerhub-credentialsUser')]) {
                bat 'docker login -u ${env.dockerhub-credentialsUser} -p ${env.dockerhub-credentialsPassword}'
                bat 'docker push %DOCKER_HUB_REPO%:latest'
+               }
            }
        }
        stage('Deploy') {
