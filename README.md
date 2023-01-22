@@ -2,7 +2,7 @@
 Building a simple CI/CD pipeline from scratch using tools like Flask, Docker, Git, GitHub, Jenkins and Kubernetes.
 
 ## TASK
-Build and deploy of a simple flask application.
+Build and deploy of a simple Flask application.
 
 ## Preconditions
 * Python
@@ -15,7 +15,7 @@ Build and deploy of a simple flask application.
 * Windows machine
 
 ## Structure
-* Dockerfile - Contains commands to build and run the docker image.
+* Dockerfile - Contains commands to build and run the Docker image.
 * Jenkinsfile - Contains the pipeline script which is involved in building, testing and deploying the application.
 * app.py - Flask application.
 * test.py - Test cases for the application.
@@ -24,7 +24,7 @@ Build and deploy of a simple flask application.
 
 ## CI/CD pipeline steps
 1. Create the Flask application.
-2. Create a github repository and push code to it.
+2. Create a GitHub repository and push code to it.
 3. Write basic test cases.
 4. Dockerise the application.
 6. Start a Jenkins server on the host.
