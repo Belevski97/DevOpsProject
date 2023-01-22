@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
- name: flask-deployment # name of the deployment
+ name: flask-deployment
  
 spec:
- template: # pod defintion
+ template:
    metadata:
-     name: flask # name of the pod
+     name: flask
      labels:
        app: flask
        tier: frontend
@@ -15,7 +15,7 @@ spec:
        - name: flask
          image: belevski97/dev-ops-project:latest
  replicas: 3
- selector: # Mandatory, Select the pods which needs to be in the replicaset
+ selector:
    matchLabels:
      app: flask
      tier: frontend

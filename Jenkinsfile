@@ -9,8 +9,8 @@ pipeline {
    }
   
    stages {
-       /* We do not need a stage for checkout here since it is done by default when using the "Pipeline script from SCM" option. */
-      
+ 
+
  
        stage('Build') {
            steps {
