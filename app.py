@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Telerik DevOps Project 2022"
+    return "Telerik DevOps Project 2023"
 
 
 if __name__ == "__main__":
