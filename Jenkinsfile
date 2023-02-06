@@ -14,6 +14,8 @@ pipeline {
        stage("Python Test") {
            steps {
                echo 'Python Testing..'
+               bat 'pip install pytest'
+               bat 'pytest test.py'
                bat 'bandit -r app.py'
            }
        }
