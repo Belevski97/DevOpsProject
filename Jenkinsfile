@@ -30,7 +30,7 @@ pipeline {
                bat 'docker stop  %CONTAINER_NAME% || true'
                bat 'docker rm  %CONTAINER_NAME% || true'
                bat 'docker run --name  %CONTAINER_NAME% %DOCKER_HUB_REPO% /bin/bash'
-               bat 'docker scan --file Dockerfile %DOCKER_HUB_REPO%:latest'
+               bat 'docker scan %DOCKER_HUB_REPO%:latest /bin/bash'
            }
        }
        stage('Push') {
