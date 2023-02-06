@@ -15,7 +15,7 @@ pipeline {
            steps {
                echo 'Python Testing..'
                bat 'pip install pytest'
-               bat 'pytest test.py $$ app.py'
+               bat 'pytest test.py'
            }
        }
        stage('Build') {
