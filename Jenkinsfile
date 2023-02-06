@@ -16,7 +16,8 @@ pipeline {
                echo 'Python Testing..'
                bat 'pip install pytest'
                bat 'pytest test.py'
-               bat 'bandit -r app.py'
+               bat 'pip install flake8'
+               bat 'pytest flake8'
            }
        }
        stage('Build') {
