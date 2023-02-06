@@ -17,7 +17,7 @@ pipeline {
                bat 'pip install pytest'
                bat 'pytest test.py'
                bat 'pip install bandit'
-               bat 'bandit -r -app.py -f html -o report.html'
+               bat 'bandit -r app.py -f html -o report.html'
            }
        }
        stage('Build') {
