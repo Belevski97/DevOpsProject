@@ -15,9 +15,9 @@ pipeline {
            steps {
                echo 'Python Testing..'
                bat 'pip install pytest'
-               bat 'pytest test.py'
+               bat 'pytest test.py $$ app.py'
                bat 'pip install flake8'
-               bat 'pytest flake8'
+               bat 'flake8 test.py $$ app.py'
            }
        }
        stage('Build') {
