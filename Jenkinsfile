@@ -14,7 +14,7 @@ pipeline {
        stage("Python Test") {
            steps {
                echo 'Python Testing..'
-               bat '/bin/bash -c "python test.py && flake8"'
+               bat '-c "pytest test.py && flake8"'
                bat 'bandit -r app.py'
            }
        }
