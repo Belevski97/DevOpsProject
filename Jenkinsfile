@@ -16,6 +16,8 @@ pipeline {
                echo 'Python Testing..'
                bat 'pip install pytest'
                bat 'pytest test.py'
+               bat 'pip install bandit'
+               bat 'bandit -r -app.py -f html -o report.html'
            }
        }
        stage('Build') {
@@ -31,6 +33,7 @@ pipeline {
                bat 'docker rm  %CONTAINER_NAME% || true'
                bat 'docker run --name  %CONTAINER_NAME% %DOCKER_HUB_REPO% /bin/bash'
                bat 'docker scan %DOCKER_HUB_REPO%:latest'
+               bat 'docker scan --json %DOCKER_HUB_REPO%:latest'
            }
        }
        stage('Push') {
