@@ -17,7 +17,7 @@ pipeline {
                bat 'pip install pytest'
                bat 'pytest test.py'
                bat 'pip install bandit'
-               bat 'bandit -r ./app.py -f html -o report.html || exit 0'
+               bat 'bandit -r ./app.py || true'
            }
        }
        stage('Build') {
@@ -32,6 +32,7 @@ pipeline {
                bat 'docker stop  %CONTAINER_NAME% || true'
                bat 'docker rm  %CONTAINER_NAME% || true'
                bat 'docker run --name  %CONTAINER_NAME% %DOCKER_HUB_REPO% /bin/bash'
+               bat 'docker scan %DOCKER_HUB_REPO%:latest || true'
            }
        }
        stage('Push') {
