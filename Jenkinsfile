@@ -16,6 +16,8 @@ pipeline {
                echo 'Python Testing..'
                bat 'pip install pytest'
                bat 'pytest test.py'
+               bat 'pip install flake8'
+               bat 'flake8 ./app.py || exit 0'
                bat 'pip install bandit'
                bat 'bandit -r ./app.py || exit 0'
            }
